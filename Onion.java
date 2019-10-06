@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Onion{
 
-  byte[] binary;
+  private byte[] binary;
 
   public Onion(byte[] binary) throws Exception{
 
@@ -63,7 +63,7 @@ public byte flip(byte x){
 public byte[] onionRecusive(byte[] list){
   //ToDo
   Onion temp;
-  byte[] tempList = new byte[list.length];;
+  byte[] tempList = new byte[list.length];
   int pos=1;
   if(list.length == 1){ //Base case
     tempList[0]=flip(list[0]);
@@ -87,9 +87,35 @@ public byte[] onionRecusive(byte[] list){
   return tempList;
 }
 
+  public boolean equals(Object obj){
+
+    if(this == obj)
+      return true;
+
+    else if(this.getClass() == obj.getClass()){
+
+      Onion onion = (Onion) obj;
+
+      if(this.binary == onion.binary)
+        return true;
+
+    }
+
+    return false;
+
+  }
+
+  public String toString(){
+
+
+    return "";
+
+  }
+
+
   public static void main(String[] args) {
     //testing
-    byte[] list={0,1,0,1,0,1,0,1,0};
+    byte[] list = {0,1,0,1,0,1,0,1,0};
     byte[] list2;
     byte[] list3 = {0,1};
     list2 = Arrays.copyOfRange(list3, 1, list.length-1);
@@ -107,5 +133,8 @@ public byte[] onionRecusive(byte[] list){
       e.printStackTrace();
     }
 //*/
+
+
+
   }
 }
