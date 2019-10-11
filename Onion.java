@@ -1,44 +1,66 @@
-//Alpha version
+/**
+recursive class that its constructor takes an odd number of binary digits as
+its field.
+The recursive method in this class is called by the constructor. It creates an
+object of same class with smaller binary number by taking the two outer digits
+and passing the binary number that is left.
+Once no more object can be created  (the base case) the binary digit is flipped
+(10101 >> 01010).
+
+At the end, the flipped version of the original binary number is returned.
+
+@author Lila & Daniel
+@version 1.0
+@since 10/5/2019
+*/
 import java.util.Arrays;
 
 public class Onion{
 
   private byte[] binary;
 
+/**
+The constructor takes a byte array, which then check if it contain only binary
+numbers and odd in length. If the array pass the check, it will call the recursive
+mathod.
+@param binary this is the byte array
+@exception thows a messege exception
+*/
   public Onion(byte[] binary) throws Exception{
 
     if((binary.length%2 == 0) || !(isBinary(binary))){
       throw new Exception("Input must be binary and odd in length.");
     }
     else{
-      //ToDo
       this.binary = onionRecusive(binary);
     }
 
   }
 
-  public byte[] stringToByte(String str){
+/**
+TODO
+*/
+  static byte[] stringToByte(String str){
 
     byte[] temp= new byte[str.length()];
-    for(int pos=0; pos>str.length();pos++){
-      temp[pos]= (byte)str.charAt(pos);
+    for(int pos=0; pos<str.length();pos++){
+      temp[pos]= (byte)(str.charAt(pos)-'0');
     }
+    System.out.println(temp);
     return temp;
   }
 
-  public static int getFirst(int num){
-    while(num > 1){
-      num=num/10;
-      System.out.println(num);
-    }
-    return num;
-  }
-
+  /**
+  //TODO
+  */
   public byte[] getByteList(){
     return binary;
   }
 
-public boolean isBinary(byte[] list) {
+  /**
+  //TODO
+  */
+private boolean isBinary(byte[] list) {
  boolean binary = true;
  int pos=-1;
  while(binary==true && pos<list.length-1){
@@ -50,7 +72,10 @@ public boolean isBinary(byte[] list) {
  return binary;
 }
 
-public byte flip(byte x){
+/**
+//TODO
+*/
+private byte flip(byte x){
   if(x == 1){
     return 0;
   }
@@ -59,9 +84,10 @@ public byte flip(byte x){
     }
   }
 
-//ToDo
-public byte[] onionRecusive(byte[] list){
-  //ToDo
+  /**
+  //TODO
+  */
+private  byte[] onionRecusive(byte[] list){
   Onion temp;
   byte[] tempList = new byte[list.length];
   int pos=1;
@@ -77,8 +103,7 @@ public byte[] onionRecusive(byte[] list){
         pos++;
       }
       tempList[list.length-1]=flip(list[list.length-1]);
-      System.out.println(" "+Arrays.toString(tempList));
-
+      System.out.println(" "+Arrays.toString(tempList)); //debugging
     }
     catch(Exception e){
       e.printStackTrace();
@@ -87,54 +112,25 @@ public byte[] onionRecusive(byte[] list){
   return tempList;
 }
 
+/**
+//TODO
+*/
   public boolean equals(Object obj){
-
     if(this == obj)
       return true;
-
     else if(this.getClass() == obj.getClass()){
-
       Onion onion = (Onion) obj;
-
       if(this.binary == onion.binary)
         return true;
-
     }
-
     return false;
-
   }
 
+  /**
+  //TODO
+  */
   public String toString(){
-
-
-    return "";
-
+    return Arrays.toString(binary);
   }
 
-
-  public static void main(String[] args) {
-    //testing
-    byte[] list = {0,1,0,1,0,1,0,1,0};
-    byte[] list2;
-    byte[] list3 = {0,1};
-    list2 = Arrays.copyOfRange(list3, 1, list.length-1);
-    System.out.println(Arrays.toString(list));
-    System.out.println(Arrays.toString(list2));
-    System.out.println(Arrays.toString(list3));
-    System.out.println(Arrays.toString(list2));
-    System.out.println("=====Testing Onion=====>>");
-///**
-    try{
-      Onion x = new Onion(list);
-      System.out.println(Arrays.toString(x.binary));
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-//*/
-
-
-
-  }
 }
