@@ -1,5 +1,5 @@
 /**
-recursive class that its constructor takes an odd number of binary digits as
+Per Blackboard: Recursive class that its constructor takes an odd number of binary digits as
 its field.
 The recursive method in this class is called by the constructor. It creates an
 object of same class with smaller binary number by taking the two outer digits
@@ -14,9 +14,7 @@ At the end, the flipped version of the original binary number is returned.
 @since 10/5/2019
 */
 import java.util.Arrays;
-
 public class Onion{
-
   private byte[] binary;
 
 /**
@@ -38,42 +36,47 @@ mathod.
   }
 
 /**
-TODO
+Static method that takes a string of binary numbers and converte them to an
+byte array.
+@param String of binary numbers.
+@@return byte array of binary numbers.
 */
   static byte[] stringToByte(String str){
-
     byte[] temp= new byte[str.length()];
     for(int pos=0; pos<str.length();pos++){
       temp[pos]= (byte)(str.charAt(pos)-'0');
     }
-    System.out.println(temp);
     return temp;
   }
 
   /**
-  //TODO
+  Returns the byte array (binary)
   */
   public byte[] getByteList(){
     return binary;
   }
 
-  /**
-  //TODO
+  /**CHecks if the given byte array only contains binary numbers, returns true
+  if only binary numbers, else returns false.
+  @@param byte array to be Checked
+  @@return true if arrey only contains binary numbers, else returns fales.
   */
 private boolean isBinary(byte[] list) {
  boolean binary = true;
- int pos=-1;
- while(binary==true && pos<list.length-1){
-   pos++;
-   if(list[pos]>1){
+ int pos=0;
+ while(binary==true && pos<list.length){
+   if(list[pos]>1 || list[pos]<0){
      binary=false;
    }
+   pos++;
  }
  return binary;
 }
 
 /**
-//TODO
+takes on byte (binary) and returns the flipped virsion of it. Ex 0>>1 or 1>>0
+@param the binary number to be flipped
+@@return retures the flipped version of the param.
 */
 private byte flip(byte x){
   if(x == 1){
@@ -85,25 +88,26 @@ private byte flip(byte x){
   }
 
   /**
-  //TODO
+  Recursive method that will take a byte array, and recursively flip each binary
+  number.
+  @@param byte array that contains binary numbers
+  @@return A flipped version of the original array
   */
 private  byte[] onionRecusive(byte[] list){
-  Onion temp;
   byte[] tempList = new byte[list.length];
-  int pos=1;
   if(list.length == 1){ //Base case
     tempList[0]=flip(list[0]);
   }
   else{
     try{
-      temp = new Onion(Arrays.copyOfRange(list, 1, list.length-1));
+      Onion temp = new Onion(Arrays.copyOfRange(list, 1, list.length-1));
+      int pos = 1;
       tempList[0]=flip(list[0]);
       for(byte x: temp.binary){
         tempList[pos] = x;
         pos++;
       }
       tempList[list.length-1]=flip(list[list.length-1]);
-      System.out.println(" "+Arrays.toString(tempList)); //debugging
     }
     catch(Exception e){
       e.printStackTrace();
@@ -112,9 +116,7 @@ private  byte[] onionRecusive(byte[] list){
   return tempList;
 }
 
-/**
-//TODO
-*/
+@Override
   public boolean equals(Object obj){
     if(this == obj)
       return true;
@@ -126,9 +128,7 @@ private  byte[] onionRecusive(byte[] list){
     return false;
   }
 
-  /**
-  //TODO
-  */
+  @Override
   public String toString(){
     return Arrays.toString(binary);
   }

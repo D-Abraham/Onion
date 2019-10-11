@@ -9,7 +9,8 @@ public static void main(String[] args) {
   byte[] list = Onion.stringToByte(str);
   try{
     Onion onion = new Onion(list);
-    System.out.println(onion.toString());
+    System.out.println("Before: "+ Arrays.toString(str.toCharArray()));//Just for 
+    System.out.println("After:  "+onion.toString());//visualization purpose only.
   }
   catch (Exception e) {
     e.printStackTrace();
