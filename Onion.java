@@ -21,8 +21,8 @@ public class Onion{
 The constructor takes a byte array, which then check if it contain only binary
 numbers and odd in length. If the array pass the check, it will call the recursive
 mathod.
-@@param binary this is the byte array
-@@exception thows a messege exception
+@param byte (binary) array
+@exception thows a messege exception
 */
   public Onion(byte[] binary) throws Exception{
 
@@ -36,9 +36,9 @@ mathod.
   }
 
 /**
-Static method that takes a string of binary numbers and converte them to an
+Static method that takes a string of binary numbers and change them to an
 byte array.
-@@param String of binary numbers.
+@param String of binary numbers.
 @return byte array of binary numbers.
 */
   static byte[] stringToByte(String str){
@@ -51,6 +51,7 @@ byte array.
 
   /**
   Returns the byte array (binary)
+  @return binary arrau
   */
   public byte[] getByteList(){
     return binary;
@@ -58,8 +59,8 @@ byte array.
 
   /**CHecks if the given byte array only contains binary numbers, returns true
   if only binary numbers, else returns false.
-  @@param byte array to be Checked
-  @@return true if arrey only contains binary numbers, else returns fales.
+  @param byte array to be Checked
+  @return true if arrey only contains binary numbers, else returns fales.
   */
 private boolean isBinary(byte[] list) {
  boolean binary = true;
@@ -75,9 +76,9 @@ private boolean isBinary(byte[] list) {
 
 /**
 takes on byte (binary) and returns the flipped virsion of it. Ex 0>>1 or 1>>0
-@@param the binary number to be flipped
-@@return retures the flipped version of the param.
-**/
+@param the binary number to be flipped
+@return retures the flipped version of the param.
+*/
 private byte flip(byte x){
   if(x == 1){
     return 0;
@@ -90,8 +91,8 @@ private byte flip(byte x){
   /**
   Recursive method that will take a byte array, and recursively flip each binary
   number.
-  @@param byte array that contains binary numbers
-  @@return A flipped version of the original array
+  @param byte array that contains binary numbers
+  @return A flipped version of the original array
   */
 private  byte[] onionRecursive(byte[] list){
   byte[] tempList = new byte[list.length];

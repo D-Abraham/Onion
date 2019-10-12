@@ -1,3 +1,4 @@
+//Lila & Daniel
 import java.util.Scanner;
 import java.util.Arrays;
 
@@ -9,22 +10,16 @@ public static void main(String[] args) {
   byte[] list = Onion.stringToByte(str);
   try{
     Onion onion = new Onion(list);
-    System.out.println("Before: "+ Arrays.toString(str.toCharArray()));//Just for 
+    System.out.println("Before: "+ Arrays.toString(str.toCharArray()));//Just for
     System.out.println("After:  "+onion.toString());//visualization purpose only.
-  }
-  catch (Exception e) {
-    e.printStackTrace();
-    }
-    scan.close();
 
-  //to test the equals method
-  byte[] list2 = {0, 1, 0, 1, 0};
-  try {
-    Onion onion = new Onion(list);
+    //to test the equals method
+    byte[] list2 = {0, 1, 0, 1, 0};
+    Onion onion1 = new Onion(list);
     Onion onion2 = new Onion(list2);
     Onion onion3 = new Onion(list2);
 
-    if(onion.equals(onion2))
+    if(onion1.equals(onion2))
       System.out.println("These two are equal.");
 
     else System.out.println("These are not equal.");
@@ -33,16 +28,10 @@ public static void main(String[] args) {
       System.out.println("These two are equal.");
 
     else System.out.println("These are not equal.");
-
   }
   catch (Exception e) {
     e.printStackTrace();
-  }
-
-
-}
-
-
-
-
+    }
+    scan.close();
+    }
 }
