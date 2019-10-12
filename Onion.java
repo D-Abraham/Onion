@@ -21,8 +21,8 @@ public class Onion{
 The constructor takes a byte array, which then check if it contain only binary
 numbers and odd in length. If the array pass the check, it will call the recursive
 mathod.
-@param binary this is the byte array
-@exception thows a messege exception
+@@param binary this is the byte array
+@@exception thows a messege exception
 */
   public Onion(byte[] binary) throws Exception{
 
@@ -30,7 +30,7 @@ mathod.
       throw new Exception("Input must be binary and odd in length.");
     }
     else{
-      this.binary = onionRecusive(binary);
+      this.binary = onionRecursive(binary);
     }
 
   }
@@ -38,8 +38,8 @@ mathod.
 /**
 Static method that takes a string of binary numbers and converte them to an
 byte array.
-@param String of binary numbers.
-@@return byte array of binary numbers.
+@@param String of binary numbers.
+@return byte array of binary numbers.
 */
   static byte[] stringToByte(String str){
     byte[] temp= new byte[str.length()];
@@ -75,9 +75,9 @@ private boolean isBinary(byte[] list) {
 
 /**
 takes on byte (binary) and returns the flipped virsion of it. Ex 0>>1 or 1>>0
-@param the binary number to be flipped
+@@param the binary number to be flipped
 @@return retures the flipped version of the param.
-*/
+**/
 private byte flip(byte x){
   if(x == 1){
     return 0;
@@ -93,7 +93,7 @@ private byte flip(byte x){
   @@param byte array that contains binary numbers
   @@return A flipped version of the original array
   */
-private  byte[] onionRecusive(byte[] list){
+private  byte[] onionRecursive(byte[] list){
   byte[] tempList = new byte[list.length];
   if(list.length == 1){ //Base case
     tempList[0]=flip(list[0]);
@@ -122,7 +122,7 @@ private  byte[] onionRecusive(byte[] list){
       return true;
     else if(this.getClass() == obj.getClass()){
       Onion onion = (Onion) obj;
-      if(this.binary == onion.binary)
+      if((this.toString()).equals(onion.toString()))
         return true;
     }
     return false;
